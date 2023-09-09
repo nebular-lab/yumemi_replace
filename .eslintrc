@@ -1,6 +1,6 @@
 {
-  "extends": ["react-app", "react-app/jest"],
-  "ignorePatterns": [
-    "/build/" // ビルド出力
-  ]
+  "rules": {
+    "no-console": "error"
+  },
+  "extends": ["react-app", "react-app/jest"]
 }
