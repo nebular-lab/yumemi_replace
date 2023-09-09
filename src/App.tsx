@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Suspense } from 'react';
+import { AppProviders } from './providers/AppProviders';
+import { ErrorBoundary } from 'react-error-boundary';
+import Spinner from './components/Spinner';
 
-function App() {
+const ErrorFallback = ({ error }: { error: Error }) => (
+  <div>
+    <h2>エラーが発生しました</h2>
+    <p>{error.message}</p>
+  </div>
+);
+
+const App = () => {
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppProviders>
+      <h1>ゆめみ コーディングテスト</h1>
+      <ErrorBoundary
+        fallbackRender={({ error }) => <ErrorFallback error={error} />}
+      >
+        <Suspense fallback={<Spinner />}>{/* <ChartPage /> */}</Suspense>
+      </ErrorBoundary>
+    </AppProviders>
   );
-}
+};
 
 export default App;
