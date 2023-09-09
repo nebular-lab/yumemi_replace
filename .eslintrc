@@ -1,8 +1,4 @@
 {
-  "rules": {
-    "no-console": "error",
-    "semi": ["error", "always"]
-  },
   "extends": ["react-app", "react-app/jest"],
   "ignorePatterns": [
     "/build/" // ビルド出力
