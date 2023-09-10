@@ -1,4 +1,4 @@
-import { axios } from '../lib/axios';
+import { axios } from '../providers/lib/axios';
 import { PopulationDataSchema, PrefecturesSchema } from '../types';
 
 export const fetchPrefectures = async () => {
