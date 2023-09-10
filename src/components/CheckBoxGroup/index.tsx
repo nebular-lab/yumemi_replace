@@ -1,45 +1,30 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { Prefecture } from '../../types';
+import CheckBox from '../Checkbox';
+import styles from './checkboxGroup.module.scss'; // 追加
 
 type CheckBoxGroupProps = {
   prefectures: Prefecture[];
   checkedPrefCodes: number[];
   toggleCheckedPrefCodes: (prefCode: number) => void;
 };
+
 const CheckBoxGroup: FC<CheckBoxGroupProps> = (props) => {
   const { prefectures, checkedPrefCodes, toggleCheckedPrefCodes } = props;
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'row' }}>
+    <div className={styles.checkBoxGroup}>
+      {' '}
       {prefectures.map((prefecture) => (
-        <CheckBox
-          key={prefecture.prefCode}
-          prefecture={prefecture}
-          checkedPrefCodes={checkedPrefCodes}
-          toggleCheckedPrefCodes={toggleCheckedPrefCodes}
-        />
+        <div className={styles.checkBoxItem} key={prefecture.prefCode}>
+          <CheckBox
+            label={prefecture.prefName}
+            isChecked={checkedPrefCodes.includes(prefecture.prefCode)}
+            onChange={() => toggleCheckedPrefCodes(prefecture.prefCode)}
+          />
+        </div>
       ))}
     </div>
-  );
-};
-
-type CheckBoxProps = {
-  prefecture: Prefecture;
-  checkedPrefCodes: number[];
-  toggleCheckedPrefCodes: (prefCode: number) => void;
-};
-const CheckBox = (props: CheckBoxProps) => {
-  const { prefecture, checkedPrefCodes, toggleCheckedPrefCodes } = props;
-  return (
-    <>
-      <input
-        id={prefecture.prefName}
-        type='checkbox'
-        checked={checkedPrefCodes.includes(prefecture.prefCode)}
-        onChange={() => toggleCheckedPrefCodes(prefecture.prefCode)}
-      />
-      <label htmlFor={prefecture.prefName}>{prefecture.prefName}</label>
-    </>
   );
 };
 

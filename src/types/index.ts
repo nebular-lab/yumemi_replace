@@ -1,12 +1,13 @@
 import { z } from 'zod';
 
-const PrefectureSchema = z.object({
+export const PrefectureSchema = z.object({
   prefCode: z.number(),
   prefName: z.string(),
 });
 export type Prefecture = z.infer<typeof PrefectureSchema>;
 
-export const PrefectureArraySchema = z.array(PrefectureSchema);
+export const PrefecturesSchema = z.array(PrefectureSchema);
+export type Prefectures = z.infer<typeof PrefecturesSchema>;
 
 export const PopulationDataSchema = z.array(
   z.object({
@@ -20,4 +21,9 @@ export const PopulationDataSchema = z.array(
     ),
   }),
 );
+
 export type PopulationData = z.infer<typeof PopulationDataSchema>;
+
+export type HttpError = {
+  err: { message: string };
+};

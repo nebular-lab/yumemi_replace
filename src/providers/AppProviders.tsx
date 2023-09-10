@@ -4,19 +4,18 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 type Props = {
   children: React.ReactNode;
 };
-
-export const AppProviders = ({ children }: Props) => {
-  const queryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        suspense: true,
-      },
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      suspense: true,
     },
-  });
+  },
+});
+export const AppProviders = ({ children }: Props) => {
   return (
     <QueryClientProvider client={queryClient}>
       {children}
-      <ReactQueryDevtools />
+      {/* <ReactQueryDevtools /> */}
     </QueryClientProvider>
   );
 };

@@ -2,6 +2,8 @@ import { Suspense } from 'react';
 import { AppProviders } from './providers/AppProviders';
 import { ErrorBoundary } from 'react-error-boundary';
 import Spinner from './components/Spinner';
+import ChartPage from './ChartPage';
+import { Header } from './components/Header';
 
 const ErrorFallback = ({ error }: { error: Error }) => (
   <div>
@@ -13,11 +15,13 @@ const ErrorFallback = ({ error }: { error: Error }) => (
 const App = () => {
   return (
     <AppProviders>
-      <h1>ゆめみ コーディングテスト</h1>
+      <Header />
       <ErrorBoundary
         fallbackRender={({ error }) => <ErrorFallback error={error} />}
       >
-        <Suspense fallback={<Spinner />}>{/* <ChartPage /> */}</Suspense>
+        <Suspense fallback={<Spinner />}>
+          <ChartPage />
+        </Suspense>
       </ErrorBoundary>
     </AppProviders>
   );

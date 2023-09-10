@@ -1,0 +1,11 @@
+// デスクトップ用の基本フォントサイズ
+html {
+  font-size: 16px;
+}
+
+// スマホ用の基本フォントサイズ
+@media (max-width: 600px) {
+  html {
+    font-size: 14px;
+  }
+}

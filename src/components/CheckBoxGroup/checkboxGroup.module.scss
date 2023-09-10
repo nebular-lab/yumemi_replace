@@ -1,0 +1,18 @@
+.checkBoxGroup {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+
+  .checkBoxItem {
+    margin: 5px;
+  }
+
+  // スマホ用のスタイリング
+  @media (max-width: 600px) {
+    padding: 8px; // パディングを少し小さく
+
+    .checkBoxItem {
+      margin: 4px; // マージンを少し小さく
+    }
+  }
+}

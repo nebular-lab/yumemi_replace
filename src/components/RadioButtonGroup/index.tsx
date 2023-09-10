@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import RadioButton from '../RadioButton';
 
 type RadioButtonGroupProps = {
   labels: string[];
@@ -22,29 +23,5 @@ const RadioButtonGroup: FC<RadioButtonGroupProps> = (props) => {
     </div>
   );
 };
-
-type RadioButtonProps = {
-  id: string;
-  value: string;
-  checked: boolean;
-  onChange: () => void;
-};
-const RadioButton: FC<RadioButtonProps> = ({
-  id,
-  value,
-  checked,
-  onChange,
-}) => (
-  <label htmlFor={id}>
-    <input
-      type='radio'
-      id={id}
-      value={value}
-      checked={checked}
-      onChange={onChange}
-    />
-    {value}
-  </label>
-);
 
 export default RadioButtonGroup;
