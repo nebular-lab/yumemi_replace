@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Prefecture } from '../../types';
 import CheckBox from '../Checkbox';
-import styles from './checkboxGroup.module.scss'; // 追加
+import styles from './checkboxGroup.module.scss';
 
 type CheckBoxGroupProps = {
   prefectures: Prefecture[];
@@ -14,7 +14,6 @@ const CheckBoxGroup: FC<CheckBoxGroupProps> = (props) => {
 
   return (
     <div className={styles.checkBoxGroup}>
-      {' '}
       {prefectures.map((prefecture) => (
         <div className={styles.checkBoxItem} key={prefecture.prefCode}>
           <CheckBox

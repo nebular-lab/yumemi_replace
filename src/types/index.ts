@@ -21,7 +21,6 @@ export const PopulationDataSchema = z.array(
     ),
   }),
 );
-
 export type PopulationData = z.infer<typeof PopulationDataSchema>;
 
 export type HttpError = {

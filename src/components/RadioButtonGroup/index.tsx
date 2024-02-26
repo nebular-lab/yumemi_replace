@@ -13,7 +13,7 @@ const RadioButtonGroup: FC<RadioButtonGroupProps> = (props) => {
     <div>
       {labels.map((label, index) => (
         <RadioButton
-          key={index}
+          key={label}
           id={label}
           value={label}
           checked={index === selectedLabelIndex}

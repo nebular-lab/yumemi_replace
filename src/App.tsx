@@ -3,8 +3,6 @@ import { AppProviders } from './providers/AppProviders';
 import { ErrorBoundary } from 'react-error-boundary';
 import Spinner from './components/Spinner';
 import ChartPage from './ChartPage';
-import { Header } from './components/Header';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 const ErrorFallback = ({ error }: { error: Error }) => (
   <div>
@@ -16,7 +14,7 @@ const ErrorFallback = ({ error }: { error: Error }) => (
 const App = () => {
   return (
     <AppProviders>
-      <Header />
+      <h2>ゆめみ コーディングテスト</h2>
       <ErrorBoundary
         fallbackRender={({ error }) => <ErrorFallback error={error} />}
       >
@@ -24,7 +22,6 @@ const App = () => {
           <ChartPage />
         </Suspense>
       </ErrorBoundary>
-      <ReactQueryDevtools />
     </AppProviders>
   );
 };

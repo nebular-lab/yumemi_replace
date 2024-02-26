@@ -1,6 +1,6 @@
 import PopulationChart from './components/Chart';
 import CheckBoxGroup from './components/CheckBoxGroup';
-import { useQueryPrefecturePopulation } from './api/getPrefecturePopulation';
+import { useQueryPrefecturePopulation } from './api/useQueryPrefecturePopulation';
 import RadioButtonGroup from './components/RadioButtonGroup';
 import { useState } from 'react';
 
@@ -8,9 +8,10 @@ const ChartPage = () => {
   const { data } = useQueryPrefecturePopulation();
 
   const [checkedPrefCodes, setCheckPrefCodes] = useState<number[]>([]);
-  const [selectedLabelIndex, setSelectedLabelIndex] = useState<number>(0);
 
-  //if (!data) return null; // TODO これをsuspenseに任せたい
+  // 「総人口」:0,「年少人口」:1,「生産年齢人口」:2,「老年人口」:3
+  // ラベルが増えても対応できるように番号で管理
+  const [selectedLabelIndex, setSelectedLabelIndex] = useState<number>(0);
 
   const toggleCheckedPrefCodes = (prefCode: number) => {
     if (checkedPrefCodes.includes(prefCode)) {
@@ -25,7 +26,7 @@ const ChartPage = () => {
   };
 
   return (
-    <div>
+    <>
       <CheckBoxGroup
         prefectures={data.prefectures}
         checkedPrefCodes={checkedPrefCodes}
@@ -43,7 +44,7 @@ const ChartPage = () => {
         populations={data.populationData}
         prefectures={data.prefectures}
       />
-    </div>
+    </>
   );
 };
 export default ChartPage;
