@@ -10,7 +10,7 @@ const ChartPage = () => {
   const [checkedPrefCodes, setCheckPrefCodes] = useState<number[]>([]);
   const [selectedLabelIndex, setSelectedLabelIndex] = useState<number>(0);
 
-  if (!data) return null; // TODO これをsuspenseに任せたい
+  //if (!data) return null; // TODO これをsuspenseに任せたい
 
   const toggleCheckedPrefCodes = (prefCode: number) => {
     if (checkedPrefCodes.includes(prefCode)) {

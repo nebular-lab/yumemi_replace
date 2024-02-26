@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useSuspenseQuery } from '@tanstack/react-query';
 import { fetchPopulationData, fetchPrefectures } from '../utils/fetch';
 
 export const useQueryPrefecturePopulation = () => {
@@ -14,10 +14,9 @@ export const useQueryPrefecturePopulation = () => {
     return { prefectures, populationTypeLabels, populationData };
   };
 
-  return useQuery({
+  return useSuspenseQuery({
     queryKey: ['prefecturePopulation'],
     queryFn: fetchPrefecturePopulation,
     staleTime: Infinity,
-    suspense: true,
   });
 };

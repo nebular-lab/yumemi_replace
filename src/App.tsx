@@ -4,6 +4,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import Spinner from './components/Spinner';
 import ChartPage from './ChartPage';
 import { Header } from './components/Header';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 const ErrorFallback = ({ error }: { error: Error }) => (
   <div>
@@ -23,6 +24,7 @@ const App = () => {
           <ChartPage />
         </Suspense>
       </ErrorBoundary>
+      <ReactQueryDevtools />
     </AppProviders>
   );
 };
